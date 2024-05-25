@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Chat with OpenAI</title>
+</head>
+<body>
+    <div>
+        <h1>Real-time Chat with OpenAI</h1>
+        <div id="conversation"></div>
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('connect', function() {
+            console.log('Connected to server');
+        });
+
+        socket.on('openai_response', function(data) {
+            document.getElementById("conversation").innerHTML += `<p>OpenAI: ${data.data}</p>`;
+        });
+
+        function sendMessage() {
+            var userInput = document.getElementById("userInput").value;
+            document.getElementById("conversation").innerHTML += `<p>You: ${userInput}</p>`;
+            socket.emit('user_message', {data: userInput});
+        }
+    </script>
+</body>
+</html>
