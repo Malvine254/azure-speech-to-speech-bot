@@ -3,9 +3,9 @@ from openai import AzureOpenAI
 
 # This example requires environment variables named "OPEN_AI_KEY", "OPEN_AI_ENDPOINT" and "OPEN_AI_DEPLOYMENT_NAME"
 # Your endpoint should look like the following https://YOUR_OPEN_AI_RESOURCE_NAME.openai.azure.com/
-api_key = "bf960d750ff946e8a8908e7f5ed53b71";
+api_key = " ";
 client = AzureOpenAI(
-    azure_endpoint="https://armelyopenai.openai.azure.com/",
+    azure_endpoint=" ",
     api_key=api_key,
     api_version="2024-02-15-preview"
 )
@@ -14,7 +14,7 @@ client = AzureOpenAI(
 deployment_id='gpt-4-model';
 
 # This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"
-speech_config = speechsdk.SpeechConfig(subscription='adff6f8e12d24ecf8f12cacb35b9ed12', region='eastus')
+speech_config = speechsdk.SpeechConfig(subscription=' ', region='eastus')
 audio_output_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
 
